@@ -1,8 +1,149 @@
-<!-- A wrapper file for the Mirage-IIIC 3D model -->
+<!-- A wrapper file for the Brazilian Mirage F-103E 3D model -->
 
 <PropertyList>
 
  <path>mirage3c.ac</path>
+ 
+ <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/FGR2/Models/Liveries", 10);
+    </load>
+    <unload>
+      livery_update.stop();
+    </unload>
+  </nasal>
+ 
+ <!-- fuselage -->
+  <animation>
+        <type>material</type>
+        <object-name>fuselage-main</object-name>
+        <object-name>Lintake</object-name>
+		<object-name>InletCone</object-name>
+		<object-name>RInlet</object-name>
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-fuselage</texture-prop>
+        <texture>mainfuselage.png</texture>
+    </animation>
+	
+	<!-- fuselage top -->
+  <animation>
+        <type>material</type>
+        <object-name>fuselage-top</object-name>
+        
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-fuselagetop</texture-prop>
+        <texture>fuselage-top.png</texture>
+    </animation>
+ 
+ <!-- fuselage nose -->
+  <animation>
+        <type>material</type>
+        <object-name>fuselage-fwd</object-name>
+		<object-name>Pitot</object-name>
+        <object-name>WindscreenFrame</object-name>
+		 <object-name>fuselage</object-name>
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-nose</texture-prop>
+        <texture>nose.png</texture>
+    </animation>
+	
+	
+ 
+ <!-- fuselage rear -->
+  <animation>
+        <type>material</type>
+        <object-name>VTail</object-name>
+        <object-name>Rudder</object-name>
+		<object-name>VentralFin</object-name>
+		
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-fuselagerear</texture-prop>
+        <texture>tail.png</texture>
+    </animation>
+	
+	<!-- fuselage bottom -->
+  <animation>
+        <type>material</type>
+        <object-name>fuselage-bottom</object-name>
+        <object-name>NoseGearDoorSide</object-name>
+		<object-name>NoseGearStrutDoor</object-name>
+		<object-name>NoseWellCoverFwd</object-name>
+		 <object-name>NoseWellCoverAft</object-name>
+		<object-name>fuselage-fwd-bottom</object-name>
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-fuselagebottom</texture-prop>
+        <texture>fuselagelow.png</texture>
+    </animation>
+ 
+ 
+ <!-- upper wing -->
+    <animation>
+        <type>material</type>
+        <object-name>LWing-top</object-name>
+		
+        <object-name>LSpeedbrake-upper</object-name>
+		<object-name>LAileron</object-name>
+		<object-name>LElevator</object-name>
+		<object-name>RWing-top</object-name>
+		
+		<object-name>RSpeedbrake-upper</object-name>
+		<object-name>RElevator</object-name>
+		<object-name>RAileron</object-name>
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-upperwings</texture-prop>
+        <texture>wing_top.png</texture>
+    </animation>
+	
+	<!-- lower wing -->
+    <animation>
+        <type>material</type>
+        <object-name>RWing</object-name>
+        <object-name>RSpeedbrake-lower</object-name>
+		<object-name>LWing</object-name>
+		<object-name>LSpeedbrake-lower</object-name>
+				
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-lwings</texture-prop>
+        <texture>wings_bottom.png</texture>
+    </animation>
+	
+	  
+  <!-- tanks -->
+	<animation>
+        <type>material</type>
+        <object-name>WingTank</object-name>
+        <object-name>RPylon</object-name>
+		<object-name>MissleRail</object-name>
+		<object-name>LPylon</object-name>
+		<object-name>MissleRail</object-name>
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-tanks</texture-prop>
+        <texture>tank.png</texture>
+    </animation>
+	
+	<!-- gear -->
+	<animation>
+        <type>material</type>
+        <object-name>LMainGearDoorOuter</object-name>
+         <object-name>MainWellCoverOuter</object-name>
+		 <object-name>MainWellCoverInner</object-name>
+		  <object-name>LMainGearDoorInner</object-name>
+		   <object-name>RMainGearDoorInner</object-name>
+		    <object-name>MainWellCoverInner</object-name>
+			 <object-name>MainWellCoverOuter</object-name>
+			 <object-name>RMainGearDoorOuter</object-name>
+			  <object-name>MainWellTop</object-name>
+			   <object-name>MainWellSides</object-name>
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-gear</texture-prop>
+        <texture>Gear1.png</texture>
+    </animation>
+
+	
 
 
 <!-- ******************** instruments *******************-->
@@ -40,6 +181,7 @@
    <x-m>-3.715</x-m>
    <y-m>0.21</y-m>
    <z-m>0.675</z-m>
+   <pitch-deg>-10.0</pitch-deg>
   </offsets>
  </model>
 
@@ -49,6 +191,7 @@
    <x-m>-3.72</x-m>
    <y-m>0.275</y-m>
    <z-m>0.675</z-m>
+   <pitch-deg>-10.0</pitch-deg>
   </offsets>
  </model>
 
@@ -89,6 +232,15 @@
  </model>
 
  <model>
+  <path>Aircraft/DavePack/Instruments/Gear/park-brake-light.xml</path>
+  <offsets>
+   <x-m>-3.73</x-m>
+   <y-m>-0.24</y-m>
+   <z-m> 0.65</z-m>
+  </offsets>
+ </model>
+
+ <model>
   <path>Aircraft/DavePack/Instruments/PanelLights/lights.xml</path>
   <offsets>
    <x-m>-3.74</x-m>
@@ -107,7 +259,7 @@
  </model>
 
  <model>
-  <path>Aircraft/Mirage-IIIC/Models/Instruments/Fuel/fuel.xml</path>
+  <path>Aircraft/DavePack/Instruments/Fuel/fuel-total-6.xml</path>
   <offsets>
    <x-m>-3.71</x-m>
    <y-m>0.25</y-m>
@@ -148,6 +300,7 @@
    <x-m>-3.72</x-m>
    <y-m> 0.15</y-m>
    <z-m> 0.63</z-m>
+   <pitch-deg>-10.0</pitch-deg>
   </offsets>
  </model>
 
@@ -167,7 +320,7 @@
 
  <!-- Drag Chute -->
  <model>
-   <path>Aircraft/Mirage-IIIC/Models/chute.xml</path>
+   <path>Aircraft/Mirage-IIICJ/Models/chute.xml</path>
    <offsets>
      <x-m>8</x-m>
      <y-m>0</y-m>
@@ -176,9 +329,21 @@
    </offsets>
  </model>
 
+ <!-- Engine Exhaust Heat Effects (doesn't work with OSG) 
+ <model>
+   <path>Aircraft/DavePack/Effects/Exhaust/exhaust.xml</path>
+   <offsets>
+     <x-m>8</x-m>
+     <y-m>0</y-m>
+     <z-m>0.4</z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+-->
+
  <!-- Engine Afterburner Plume -->
  <model>
-   <path>Aircraft/Mirage-IIIC/Models/Effects/Afterburner/plume.xml</path>
+   <path>Aircraft/Mirage-IIICJ/Models/Effects/Afterburner/plume.xml</path>
    <offsets>
      <x-m>0</x-m>
      <y-m>0</y-m>
@@ -188,7 +353,7 @@
 
  <!-- Wing-tip vortices -->
  <model>
-   <path>Aircraft/DavePack/Effects/Vortex/vortex.xml</path>
+   <path>Aircraft/DavePack/Effects/Vortex/condensation-left.xml</path>
    <offsets>
      <x-m>5.3</x-m>
      <y-m>-4.0</y-m>
@@ -197,7 +362,7 @@
    </offsets>
  </model>
  <model>
-   <path>Aircraft/DavePack/Effects/Vortex/vortex.xml</path>
+   <path>Aircraft/DavePack/Effects/Vortex/condensation-right.xml</path>
    <offsets>
      <x-m>5.3</x-m>
      <y-m>4.0</y-m>
@@ -226,29 +391,25 @@
    </offsets>
  </model>
 
+  <!-- Contrail -->
+  <model>
+    <path>Aircraft/DavePack/Effects/Contrail/contrail.xml</path>
+    <offsets>
+      <x-m> 10.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m>  0.2 </z-m>
+    </offsets>
+  </model>
+
  <!-- Stores *************************************************** -->
 
+ <!-- MATRA R.530 on centerline pylon -->
+ 
  <!-- AIM-9, left side -->
- <model>
-  <path>Aircraft/Mirage-IIIC/Models/Stores/AIM-9/sidewinder.xml</path>
-  <offsets>
-   <x-m> 3.22</x-m>
-   <y-m>-3.07</y-m>
-   <z-m>-0.47</z-m>
-   <pitch-deg>-4</pitch-deg>
-  </offsets>
- </model>
+ 
 
  <!-- AIM-9, right side -->
- <model>
-  <path>Aircraft/Mirage-IIIC/Models/Stores/AIM-9/sidewinder.xml</path>
-  <offsets>
-   <x-m> 3.22</x-m>
-   <y-m> 3.07</y-m>
-   <z-m>-0.47</z-m>
-   <pitch-deg>-4</pitch-deg>
-  </offsets>
- </model>
+
 
  <!-- Animations *********************************************** -->
 
@@ -283,7 +444,7 @@
   <type>rotate</type>
   <object-name>LMainGear</object-name>
   <object-name>LMainGearTire</object-name>
-  <property>gear/gear[1]/position-norm</property>
+  <property>/gear/gear/position-norm</property>
   <interpolation>
     <entry><ind>0</ind><dep>80</dep></entry>
     <entry><ind>0.1</ind><dep>80</dep></entry>
@@ -305,7 +466,7 @@
   <type>rotate</type>
   <object-name>RMainGear</object-name>
   <object-name>RMainGearTire</object-name>
-  <property>gear/gear[2]/position-norm</property>
+  <property>/gear/gear/position-norm</property>
   <interpolation>
     <entry><ind>0</ind><dep>80</dep></entry>
     <entry><ind>0.1</ind><dep>80</dep></entry>
@@ -327,11 +488,11 @@
   <type>spin</type>
   <object-name>LMainGearTire</object-name>
   <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
-  <factor>46.56</factor>
+  <factor>7</factor>
   <center>
-   <x-m>1.82</x-m>
+   <x-m>1.825</x-m>
    <y-m>-1.636</y-m>
-   <z-m>-1.197</z-m>
+   <z-m>-1.193</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -344,11 +505,11 @@
   <type>spin</type>
   <object-name>RMainGearTire</object-name>
   <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
-  <factor>46.56</factor>
+  <factor>7</factor>
   <center>
-   <x-m>1.82</x-m>
+   <x-m>1.825</x-m>
    <y-m> 1.636</y-m>
-   <z-m>-1.197</z-m>
+   <z-m>-1.193</z-m>
   </center>
   <axis>
    <x>0</x>
@@ -360,7 +521,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LMainGearDoorOuter</object-name>
-  <property>gear/gear[1]/position-norm</property>
+  <property>/gear/gear/position-norm</property>
   <interpolation>
     <entry><ind>0</ind><dep>90</dep></entry>
     <entry><ind>0.9</ind><dep>0</dep></entry>
@@ -381,7 +542,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RMainGearDoorOuter</object-name>
-  <property>gear/gear[2]/position-norm</property>
+  <property>/gear/gear/position-norm</property>
   <interpolation>
     <entry><ind>0</ind><dep>90</dep></entry>
     <entry><ind>0.9</ind><dep>0</dep></entry>
@@ -526,6 +687,25 @@
  </animation>
 
  <animation>
+  <type>rotate</type>
+  <object-name>NoseGearTire</object-name>
+  <object-name>NoseGearLower</object-name>
+  <object-name>LandingLight</object-name>
+  <property>sim/multiplay/generic/float[1]</property>
+  <factor>1</factor>
+  <center>
+   <x-m>-3.58</x-m>
+   <y-m>0</y-m>
+   <z-m>-1.0</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>-1</z>
+  </axis>
+ </animation>
+
+ <animation>
   <type>select</type>
   <object-name>NoseGearBrace</object-name>
   <condition>
@@ -610,29 +790,10 @@
  </animation>
 
  <animation>
-  <type>rotate</type>
-  <object-name>NoseGearTire</object-name>
-  <object-name>NoseGearLower</object-name>
-  <object-name>LandingLight</object-name>
-  <property>sim/multiplay/generic/float[1]</property>
-  <factor>60</factor>
-  <center>
-   <x-m>-3.58</x-m>
-   <y-m>0</y-m>
-   <z-m>-1.0</z-m>
-  </center>
-  <axis>
-   <x>0</x>
-   <y>0</y>
-   <z>-1</z>
-  </axis>
- </animation>
-
- <animation>
   <type>spin</type>
   <object-name>NoseGearTire</object-name>
   <property>fdm/jsbsim/gear/unit[0]/wheel-speed-fps</property>
-  <factor>72.76</factor>
+  <factor>12</factor>
   <center>
    <x-m>-3.494</x-m>
    <y-m>0</y-m>
@@ -898,6 +1059,103 @@
   </emission>
  </animation>
 
+ <!-- Canopy -->
+ <animation>
+  <type>rotate</type>
+  <object-name>CanopyGlass</object-name>
+  <object-name>CanopyFrame</object-name>
+  <property>canopy/position-norm</property>
+  <factor>45</factor>
+  <center>
+   <x-m>-2.62</x-m>
+   <y-m>0</y-m>
+   <z-m>1.16</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
 
+ <!-- aircraft wash modeled in the lines below -->
+ 
+ <model>
+	 <name>aircraft_wash_l</name>
+	 <path>Aircraft/Mirage-IIICJ/Models/Effects/wash/aircraft_wash.xml</path>
+	 <condition>
+		 <equals>
+			 <property>controls/state/low_level</property>
+			 <value>1</value>
+		 </equals>
+	 </condition>
+	 <offsets>
+		 <x-m>25.000</x-m>
+		 <y-m>4.50</y-m>
+		 <z-m>0.0</z-m>
+		 <pitch-deg>0</pitch-deg>
+	 </offsets>
+ </model>
+ 
+
+  
+  <animation>
+	 <type>translate</type>
+	 <object-name>aircraft_wash_l</object-name>
+	 
+	 <property>position/altitude-agl-ft</property>
+	 <condition>
+		 <equals>
+			 <property>controls/state/low_level</property>
+			 <value>1</value>
+		 </equals>
+	 </condition>
+	 <interpolation>
+		 <entry>
+			 <ind>0.0</ind>
+			 <dep>0.0</dep>
+		 </entry>
+		 <entry>
+			 <ind>300.0</ind>
+			 <dep>-90</dep>
+		 </entry>
+	 </interpolation>
+	 
+	 <axis>
+		 <x>-1</x>
+		 <y>0</y>
+		 <z>1.0</z>
+	 </axis>
+	 
+ </animation>
+ 
+ <!-- Wing Vapour -->
+ 
+ <model>
+		<path>Aircraft/Mirage-IIICJ/Models/Effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>1.0</x-m>
+			<y-m>-2</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>45</heading-deg>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>Aircraft/Mirage-IIICJ/Models/Effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>1.0</x-m>
+			<y-m>2</y-m>
+			<z-m>0.9</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>-45</heading-deg>
+		</offsets>
+	</model>
+ 
+ 
+ 
 </PropertyList>
  

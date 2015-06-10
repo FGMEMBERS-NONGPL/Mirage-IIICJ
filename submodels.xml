@@ -31,7 +31,7 @@
     <delay>0</delay>
     <count>-1</count>
     <x-offset>15.0</x-offset>
-    <y-offset>-1.0</y-offset>
+    <y-offset>-1.5</y-offset>
     <z-offset>-1.4</z-offset>
     <yaw-offset>0.0</yaw-offset>
     <pitch-offset>-1.5</pitch-offset>
@@ -76,7 +76,7 @@
     <delay>0</delay>
     <count>-1</count>
     <x-offset>15.0</x-offset>
-    <y-offset>1.0</y-offset>
+    <y-offset>1.5</y-offset>
     <z-offset>-1.4</z-offset>
     <yaw-offset>0.0</yaw-offset>
     <pitch-offset>-1.5</pitch-offset>
@@ -133,7 +133,7 @@
   <!-- Drag Chute -->
   <submodel>
     <name>Braking Parachute</name>
-    <model>Aircraft/Mirage-IIIC/Models/fullchute.ac</model>
+    <model>Aircraft/Mirage-IIICJ/Models/fullchute.ac</model>
     <trigger>controls/flight/chute_jettisoned</trigger>
     <speed>0</speed>
     <repeat>false</repeat>

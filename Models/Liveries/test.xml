@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">test</name>
+     <texture-fuselage>Liveries/test/mainfuselage.png</texture-fuselage>
+     <texture-fuselagetop>Liveries/test/fuselage-top.png</texture-fuselagetop>
+	 <texture-nose>Liveries/test/nose.png</texture-nose>
+	 <texture-fuselagerear>Liveries/test/tail.png</texture-fuselagerear>
+     <texture-upperwings>Liveries/test/wings_top.png</texture-upperwings>
+	 <texture-lwings>Liveries/test/wings_bottom.png</texture-lwings>
+	 <texture-tanks>Liveries/test/tank.png</texture-tanks>
+     <texture-gear>Liveries/test/Gear1.png</texture-gear>
+	  <texture-fuselagebottom>Liveries/test/fuselagelow.png</texture-fuselagebottom>
+
+
+   <specular>
+              <red>   0.3 </red>
+              <green> 0.3 </green>
+              <blue>  0.3 </blue>
+            </specular>
+
+            <emission>
+              <red>   0.2 </red>
+              <green> 0.2 </green>
+              <blue>  0.2 </blue>
+            </emission>
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

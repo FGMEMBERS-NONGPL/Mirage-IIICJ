@@ -38,7 +38,7 @@
  </metrics>
 
  <mass_balance>
-   <ixx unit="SLUG*FT2">      9500 </ixx>
+   <ixx unit="SLUG*FT2">      6500 </ixx>
    <iyy unit="SLUG*FT2">     31000 </iyy>
    <izz unit="SLUG*FT2">     26000 </izz>
    <ixy unit="SLUG*FT2">         0 </ixy>
@@ -48,7 +48,7 @@
    <location name="CG" unit="IN">
      <x> 327.00 </x>
      <y>   0.00 </y>
-     <z>   0.00 </z>
+     <z>  -4.00 </z>
    </location>
    <pointmass name="station1"><!-- left wing outboard pylon -->
       <weight unit="LBS"> 0 </weight>
@@ -59,7 +59,7 @@
       </location>
    </pointmass>
    <pointmass name="station2"><!-- left wing inboard pylon -->
-      <weight unit="LBS"> 0 </weight>
+      <weight unit="LBS"> 900 </weight>
       <location name="POINTMASS" unit="IN">
           <x>  325 </x>
           <y> -100 </y>
@@ -67,7 +67,7 @@
       </location>
    </pointmass>
    <pointmass name="station3"><!-- empty centerline fuel tank -->
-      <weight unit="LBS"> 180 </weight>
+      <weight unit="LBS"> 0 </weight>
       <location name="POINTMASS" unit="IN">
           <x>  320 </x>
           <y>    0 </y>
@@ -75,7 +75,7 @@
       </location>
    </pointmass>
    <pointmass name="station4"><!-- right wing inboard pylon -->
-      <weight unit="LBS"> 0 </weight>
+      <weight unit="LBS"> 900 </weight>
       <location name="POINTMASS" unit="IN">
           <x>  325 </x>
           <y>  100 </y>
@@ -104,7 +104,11 @@
    <dynamic_friction> 0.50 </dynamic_friction>
    <rolling_friction> 0.02 </rolling_friction>
    <spring_coeff unit="LBS/FT">       7500.00 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC">  4500.00 </damping_coeff>
+   <damping_coeff unit="LBS/FT/SEC">  3500.00 </damping_coeff>
+   <relaxation_velocity>
+      <rolling>0.3</rolling>
+      <side>0.5</side>
+   </relaxation_velocity>
    <max_steer unit="DEG"> 55.00 </max_steer>
    <brake_group>NONE</brake_group>
    <retractable>1</retractable>
@@ -113,14 +117,19 @@
   <contact type="BOGEY" name="LEFT_MAIN">
    <location unit="IN">
      <x>  335.00 </x>
-     <y>  -88.00 </y>
+     <y> -120.00 </y>
      <z>  -66.00 </z>
    </location>
    <static_friction>  0.80 </static_friction>
    <dynamic_friction> 0.50 </dynamic_friction>
-   <rolling_friction> 0.02 </rolling_friction>
+   <rolling_friction> 0.026 </rolling_friction>
    <spring_coeff unit="LBS/FT">      15000.00 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 11000.00 </damping_coeff>
+   <damping_coeff unit="LBS/FT/SEC">  6200.00 </damping_coeff>
+   <relaxation_velocity>
+      <rolling>0.3</rolling>
+      <side>0.5</side>
+   </relaxation_velocity>
+   <max_steer unit="DEG">0</max_steer>
    <brake_group>LEFT</brake_group>
    <retractable>1</retractable>
  </contact>
@@ -128,14 +137,19 @@
   <contact type="BOGEY" name="RIGHT_MAIN">
    <location unit="IN">
      <x> 335.00 </x>
-     <y>  88.00 </y>
+     <y> 120.00 </y>
      <z> -66.00 </z>
    </location>
    <static_friction>  0.80 </static_friction>
    <dynamic_friction> 0.50 </dynamic_friction>
-   <rolling_friction> 0.02 </rolling_friction>
+   <rolling_friction> 0.026 </rolling_friction>
    <spring_coeff unit="LBS/FT">      15000.00 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 11000.00 </damping_coeff>
+   <damping_coeff unit="LBS/FT/SEC">  6200.00 </damping_coeff>
+   <relaxation_velocity>
+      <rolling>0.3</rolling>
+      <side>0.5</side>
+   </relaxation_velocity>
+   <max_steer unit="DEG">0</max_steer>
    <brake_group>RIGHT</brake_group>
    <retractable>1</retractable>
  </contact>
@@ -148,8 +162,9 @@
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
-    <spring_coeff unit="LBS/FT">      20720.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC"> 14144.00 </damping_coeff>
+    <spring_coeff unit="LBS/FT">       1000.00 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  4000.00 </damping_coeff>
+    <damping_coeff_rebound unit="LBS/FT/SEC">  100.00 </damping_coeff_rebound>
  </contact>
 
   <contact type="STRUCTURE" name="RIGHT_WING">
@@ -160,20 +175,21 @@
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
-    <spring_coeff unit="LBS/FT">      20720.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC"> 14144.00 </damping_coeff>
+    <spring_coeff unit="LBS/FT">       1000.00 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  4000.00 </damping_coeff>
+    <damping_coeff_rebound unit="LBS/FT/SEC">  100.00 </damping_coeff_rebound>
  </contact>
 
   <contact type="STRUCTURE" name="AFT_FUSELAGE">
     <location unit="IN">
      <x> 500 </x>
      <y>   0 </y>
-     <z> -10 </z>
+     <z> -20 </z>
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <spring_coeff unit="LBS/FT">      40000.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC"> 38000.00 </damping_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  8000.00 </damping_coeff>
  </contact>
 
   <contact type="STRUCTURE" name="FWD_FUSELAGE">
@@ -185,7 +201,7 @@
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <spring_coeff unit="LBS/FT">      40000.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC"> 38000.00 </damping_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  8000.00 </damping_coeff>
  </contact>
 
  </ground_reactions>
@@ -225,7 +241,8 @@
      <priority>2</priority>
      <capacity unit="LBS"> 3893 </capacity>
      <contents unit="LBS"> 3800 </contents>
-     <standpipe unit="LBS"> 1000 </standpipe> 
+     <standpipe unit="LBS"> 1000 </standpipe>
+     <type>JP-4</type>
   </tank>
 
   <!-- external left wing tank (165 gal) -->
@@ -237,6 +254,7 @@
      </location>
      <capacity unit="LBS"> 1100 </capacity>
      <contents unit="LBS"> 1000 </contents>
+	 <type>JP-4</type>
   </tank>
 
   <!-- external right wing tank (165 gal) -->
@@ -248,6 +266,7 @@
      </location>
      <capacity unit="LBS"> 1100 </capacity>
      <contents unit="LBS"> 1000 </contents>
+	 <type>JP-4</type>
   </tank>
 
   <dump-rate unit="LBS/MIN"> 1500 </dump-rate>
@@ -267,6 +286,8 @@
  <system file="armament"/>
  <system file="beacon"/>
  <system file="particles"/>
+ <system file="canopy"/>
+
 
  <flight_control name="none"/>
 
@@ -332,8 +353,7 @@
               -0.20 -0.620
                0.00  0.030
                0.28  0.860
-               0.60  0.430
-               1.40  0
+               0.60  0.448
             </tableData>
           </table>
       </product>
@@ -386,7 +406,7 @@
            <property>metrics/Sw-sqft</property>
            <property>aero/cl-squared</property>
            <property>aero/function/kCDge</property>
-           <value>0.16</value>
+           <value>0.14</value>
          </product>
     </function>
 
@@ -463,7 +483,7 @@
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>systems/chute/unfurl-norm</property>
-           <value>0.5</value>
+           <value>0.4</value>
          </product>
     </function>
 

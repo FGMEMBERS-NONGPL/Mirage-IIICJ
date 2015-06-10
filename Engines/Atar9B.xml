@@ -12,10 +12,10 @@
 -->
 
 <turbine_engine name="Atar9B">
-  <milthrust>  9370.0 </milthrust>
-  <maxthrust> 14055.0 </maxthrust>
+  <milthrust>  16000.0 </milthrust>
+  <maxthrust> 21100.0 </maxthrust>
   <bypassratio>     1.0 </bypassratio>
-  <tsfc>            0.8 </tsfc>
+  <tsfc>            0.6 </tsfc>
   <atsfc>           1.7 </atsfc>
   <bleed>           0.03</bleed>
   <idlen1>         30.0 </idlen1>

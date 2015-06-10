@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-
 <!--
+The Mirage IIIEA is based on the Mirage-IIIC
 ************************************************************************
 Mirage-IIIC config file
 David Culp,  davidculp@cox.net
-License: Creative Commons, CC-BY-NC-SA
+License:  Creative Commons, CC-BY-NC-SA.  See the Reamdme.txt file
 ************************************************************************
 -->
 
@@ -12,23 +12,33 @@ License: Creative Commons, CC-BY-NC-SA
 
  <sim>
 
-  <description>Dassault Mirage IIIC</description>
-  <author>David Culp (FDM), model converted from AlphaSim model</author>
-  <status>beta</status>
+  <description>Mirage-IIICJ</description>
+  <author>David Culp (FDM),AlphaSim,</author>
+  <status>beta V1.0</status>
   <flight-model>jsb</flight-model>
-  <aero>Mirage-IIIC-jsbsim</aero>
+  <aero>Mirage-IIICJ-jsbsim</aero>
 
   <startup>
-   <splash-texture>Aircraft/FGR2/FGR2-splash.png</splash-texture>
+   <splash-texture>Aircraft/Mirage-IIICJ/F-103E-splash.png</splash-texture>
   </startup>
+
+  <systems>
+   <refuel>
+     <contact type="bool">false</contact>
+     <type>boom</type>
+   </refuel>
+    <autopilot> 
+         <path>Aircraft/Mirage-IIICJ/Systems/autopilot5.xml</path>
+    </autopilot> 
+   </systems>
   
   <sound>
-    <path>Aircraft/Mirage-IIIC/Sounds/MiG-21-sound.xml</path>
+    <path>Aircraft/Mirage-IIICJ/Sounds/MiG-21-sound.xml</path>
   </sound>
 
   <submodels> 
     <serviceable type="bool">true</serviceable>
-    <path>Aircraft/Mirage-IIIC/submodels.xml</path>
+    <path>Aircraft/Mirage-IIICJ/submodels.xml</path>
   </submodels>
 
   <virtual-cockpit archive="y">true</virtual-cockpit>
@@ -49,15 +59,20 @@ License: Creative Commons, CC-BY-NC-SA
   </view>
 
   <model>
-   <path>Aircraft/Mirage-IIIC/Models/Mirage-IIIC.xml</path>
+   <path>Aircraft/Mirage-IIICJ/Models/Mirage-IIICJ.xml</path>
   </model>
 
   <chase-distance-m>-20</chase-distance-m>
 
+
   <help>
    <key>
+    <name>c (lower case c) </name>
+    <desc>Toggle canopy</desc>
+   </key>
+   <key>
     <name>Shift-Q</name>
-    <desc>Fuel cutoff switch</desc>
+    <desc>fuel cutoff switch or lever</desc>
    </key>
    <key>
     <name>d (lower case d) </name>
@@ -72,40 +87,12 @@ License: Creative Commons, CC-BY-NC-SA
     <desc>Nose wheel steering</desc>
    </key>
    <key>
-    <name>e (lower case e) </name>
-    <desc>Fire weapons</desc>
-   </key>
-   <key>
-    <name>1 </name>
-    <desc>Select Stations 1 and 5, deselect others</desc>
-   </key>
-   <key>
-    <name>2 </name>
-    <desc>Select Stations 2 and 4, deselect others</desc>
-   </key>
-   <key>
-    <name>3 </name>
-    <desc>Select Station 3, deselect others</desc>
-   </key>
-   <key>
-    <name>Shift 1 </name>
-    <desc>Select Station 1</desc>
-   </key>
-   <key>
-    <name>Shift 2 </name>
-    <desc>Select Station 2</desc>
-   </key>
-   <key>
-    <name>Shift 3 </name>
-    <desc>Select Station 3</desc>
-   </key>
-   <key>
-    <name>0 </name>
-    <desc>Deselect All Stations</desc>
+    <name>e (lower case e)</name>
+    <desc>Release selected stores</desc>
    </key>
    <line> </line>
-   <line>Takeoff: rotate at 150 kts.</line>
-   <line>Landing: Final Approach at 167 kts. + 3 kts. per 1000 lbs fuel.</line>
+   <line>Takeoff: rotate at 150 kts. (wrong, follow the manual once we have written it :-))</line>
+   <line>Landing: final approach at 167 kts. + 3 kts. per 1000 lbs fuel.</line>
    <line> </line>
    <line>Gear limit: 250 knots. </line>
    <line>G limit (operational): 7.3</line>
@@ -125,11 +112,14 @@ License: Creative Commons, CC-BY-NC-SA
       </parameters> 
     </redout>
   </rendering>
+  
+  <menubar include="Dialogs/menu.xml"/>
 
  </sim>
 
  <controls>
   <flight>
+   <flaps>0</flaps>
    <elevator-trim>-0.2</elevator-trim>
   </flight>
   <lighting>
@@ -141,6 +131,9 @@ License: Creative Commons, CC-BY-NC-SA
     <intensity type="double">0.3</intensity>
    </gunsight>
   </armament>
+  <gear>
+    <brake-parking type="double">1.0</brake-parking>
+  </gear>
  </controls>
 
  <engines>
@@ -154,7 +147,7 @@ License: Creative Commons, CC-BY-NC-SA
 
   <key n="81">
    <name>Shift-Q</name>
-   <desc>Fuel Cutoff Switch.</desc>
+   <desc>Fuel Cutoff Switch or Lever.</desc>
    <binding>
     <condition>
      <property>/sim/input/selected/engine[0]</property>
@@ -164,121 +157,42 @@ License: Creative Commons, CC-BY-NC-SA
    </binding>
   </key>
 
- <key n="33">
-  <name>Shift 1</name>
-  <desc>Add Station 1</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station1/selected</property>
-   <value type="int">1</value>
-  </binding>
- </key>
+    <key n="101">
+     <name>e</name>
+     <desc>Release selected store(s)</desc>
+      <binding>
+       <command>property-assign</command>
+       <property>fdm/jsbsim/systems/armament/release</property>
+       <value>1</value>
+      </binding>
+     <mod-up>
+       <binding>
+        <command>property-assign</command>
+        <property>fdm/jsbsim/systems/armament/release</property>
+        <value>0</value> 
+       </binding>
+     </mod-up>
+    </key>
 
- <key n="64">
-  <name>Shift 2</name>
-  <desc>Add Station 2</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station2/selected</property>
-   <value type="int">1</value>
-  </binding>
- </key>
-
- <key n="35">
-  <name>Shift 3</name>
-  <desc>Add Station 3</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station3/selected</property>
-   <value type="int">1</value>
-  </binding>
- </key>
-
- <key n="48">
-  <name>0</name>
-  <desc>De-select All Stations</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station1/selected</property>
-   <value type="int">0</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station2/selected</property>
-   <value type="int">0</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station3/selected</property>
-   <value type="int">0</value>
-  </binding>
- </key>
-
- <key n="49">
-  <name>1</name>
-  <desc>Select Station 1 exclusively</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station1/selected</property>
-   <value type="int">1</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station2/selected</property>
-   <value type="int">0</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station3/selected</property>
-   <value type="int">0</value>
-  </binding>
- </key>
-
- <key n="50">
-  <name>2</name>
-  <desc>Select Station 2</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station2/selected</property>
-   <value type="int">1</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station1/selected</property>
-   <value type="int">0</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station3/selected</property>
-   <value type="int">0</value>
-  </binding>
- </key>
-
- <key n="51">
-  <name>3</name>
-  <desc>Select Station 3</desc>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station3/selected</property>
-   <value type="int">1</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station1/selected</property>
-   <value type="int">0</value>
-  </binding>
-  <binding>
-   <command>property-assign</command>
-   <property>fdm/jsbsim/systems/armament/station2/selected</property>
-   <value type="int">0</value>
-  </binding>
- </key>
-
+    <key n="99">
+     <name>c</name>
+     <desc>toggle canopy</desc>
+     <binding>
+       <command>property-toggle</command>
+       <property>fdm/jsbsim/systems/canopy/command</property>
+     </binding>
+    </key>
 
    <key n="100">
      <name>d</name>
      <desc>Deploy braking chute</desc>
      <binding>
+      <condition>
+       <equals>
+         <property>controls/flight/chute_jettisoned</property>
+         <value>0</value>
+       </equals>
+      </condition>
       <command>property-assign</command>
       <property>fdm/jsbsim/systems/chute/deploy</property>
       <value type="int">1</value>
@@ -302,14 +216,10 @@ License: Creative Commons, CC-BY-NC-SA
 
     <key n="115">
      <name>s</name>
-     <desc>Toggle starter valves.</desc>
+     <desc>Toggle starter valve.</desc>
      <binding>
        <command>property-toggle</command>
        <property>controls/engines/engine[0]/starter</property>
-     </binding>
-     <binding>
-       <command>property-toggle</command>
-       <property>controls/engines/engine[1]/starter</property>
      </binding>
      <mod-up>
        <binding>
@@ -317,6 +227,7 @@ License: Creative Commons, CC-BY-NC-SA
        </binding>
      </mod-up>
     </key>
+
 
     <key n="109">
      <name>m</name>
@@ -333,15 +244,6 @@ License: Creative Commons, CC-BY-NC-SA
         <value>0</value> 
        </binding>
      </mod-up>
-    </key>
-
-    <key n="99">
-     <name>c</name>
-     <desc>toggle canopy</desc>
-     <binding>
-       <command>property-toggle</command>
-       <property>fdm/jsbsim/systems/canopy/command</property>
-     </binding>
     </key>
 
  </keyboard>
@@ -369,9 +271,6 @@ License: Creative Commons, CC-BY-NC-SA
        <dump>
          <armed type="double">0</armed>
        </dump>
-       <NWS>
-         <engaged type="double">0</engaged>
-       </NWS>
        <canopy>
          <command type="double">0</command>
          <position type="double">0</position>
@@ -384,7 +283,7 @@ License: Creative Commons, CC-BY-NC-SA
         <selected type="double">0</selected>
       </station2>
       <station3>
-        <selected type="double">0</selected>
+        <selected type="double">1</selected>
       </station3>
       <station4>
         <selected type="double">0</selected>
@@ -396,6 +295,19 @@ License: Creative Commons, CC-BY-NC-SA
      </systems>
    </jsbsim>
  </fdm>
+ 
+ <nasal>
+ 
+    <FGR2>
+     <file>Aircraft/Mirage-IIICJ/Nasal/light.nas</file>
+	  <file>Aircraft/Mirage-IIICJ/Nasal/liveries.nas</file>
+    </FGR2>
+	<low>
+      <file>Aircraft/Mirage-IIICJ/Nasal/low.nas</file>
+    </low>
+    
+ </nasal>
+
 
 </PropertyList>
 

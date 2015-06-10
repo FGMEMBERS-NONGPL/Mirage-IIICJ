@@ -1,17 +1,8 @@
 <?xml version="1.0"?>
 
-<!-- Nose Wheel Steering System.
-     The property "/systems/NWS/engaged" should be assigned a value of
-     0 or 1, usually by way of a key or button binding.  If the NWS is
-     off (value = 0) then the steering command is reduced using the
-     scheduled_gain device below.  This means that the max_steer angle
-     in the FDM configuration file should be the angle one would get
-     with NWS engaged.
--->
-
 <system name="NWS">
 
-  <property>systems/NWS/engaged</property>
+  <property value= "0">systems/NWS/engaged</property>
 
   <channel name="Nose Wheel Steering">
 
@@ -20,18 +11,13 @@
       <table>
         <independentVar lookup="row">systems/NWS/engaged</independentVar>
          <tableData>
-            0     -0.05
-            1     -1.0
+            0     -6
+            1     -60
          </tableData>
       </table>
-      <output>fcs/steer-cmd-norm</output>
+      <output>fcs/steer-pos-deg[0]</output>
+      <output>/sim/multiplay/generic/float[1]</output>
      </scheduled_gain>
-
-   <pure_gain name="Copy">
-     <input>fcs/steer-cmd-norm</input>
-     <gain>1</gain>
-     <output>/sim/multiplay/generic/float[1]</output>
-   </pure_gain>
 
   </channel>
 
